@@ -1,7 +1,7 @@
-# test
+설치 방법
 ---
-| wow
-|wow
 ```javascript
-테스트요
+npm install @cizz/easy-form
 ```
+
+#### 테스트 중입니다.

@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
+echo "${CYAN}커밋 대상 브랜치명 :${YELLOW} * $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') *"
+echo "${CYAN}commit 전에 Prettier, Eslint 점검을 시작합니다."
+npm run lint-staged

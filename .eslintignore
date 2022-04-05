@@ -1,0 +1,7 @@
+!.eslintrc.js
+!.eslintrc.json
+!.prettierrc.js
+!.prettierrc.json
+.gitignore
+!node_modules
+.next
