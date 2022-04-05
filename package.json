@@ -1,0 +1,23 @@
+{
+  "name": "@cizz/easy_form",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cizz3007/easy-form.git"
+  },
+  "keywords": [
+    "form",
+    "input"
+  ],
+  "author": "cizz3007",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cizz3007/easy-form/issues"
+  },
+  "homepage": "https://github.com/cizz3007/easy-form#readme"
+}
