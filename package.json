@@ -2,7 +2,7 @@
   "name": "@cizz3007/easy-form",
   "version": "1.0.0",
   "description": "test",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
@@ -30,6 +30,37 @@
       "eslint --fix"
     ]
   },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/ui.min.js",
+      "maxSize": "280 kB"
+    },
+    {
+      "path": "./dist/ui.min.css",
+      "maxSize": "66 kB"
+    },
+    {
+      "path": "./dist/ui.dark.min.css",
+      "maxSize": "67 kB"
+    },
+    {
+      "path": "./dist/ui.compact.min.css",
+      "maxSize": "66 kB"
+    },
+    {
+      "path": "./dist/ui.variable.min.css",
+      "maxSize": "66 kB"
+    }
+  ],
   "devDependencies": {
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
@@ -41,6 +72,7 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
+    "antd": "^4.19.5",
     "styled-components": "5.3.5"
   }
 }
