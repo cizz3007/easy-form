@@ -1,8 +1,44 @@
 {
   "name": "@cizz3007/easy-form",
+  "title": "test-design-system",
   "version": "1.0.5",
   "description": "test",
-  "main": "index.ts",
+  "main": "dist/esm/index.js",
+  "module": "es/index.js",
+  "unpkg": "dist/antd.min.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "dist/esm",
+    "dist/cjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cizz3007/easy-form.git"
+  },
+  "keywords": [
+    "component",
+    "components",
+    "react",
+    "react-component",
+    "ui",
+    "design",
+    "form",
+    "design-system",
+    "material"
+  ],
+  "author": "cizz3007",
+  "contributors": [
+    "cizz3007"
+  ],
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/cizz3007"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cizz3007/easy-form/issues"
+  },
+  "homepage": "https://github.com/cizz3007/easy-form#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
@@ -18,20 +54,6 @@
     "build:types": "tsc --declaration --declarationDir dist/types",
     "postbuild": "echo I run after the build script"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cizz3007/easy-form.git"
-  },
-  "keywords": [
-    "form",
-    "input"
-  ],
-  "author": "cizz3007",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cizz3007/easy-form/issues"
-  },
-  "homepage": "https://github.com/cizz3007/easy-form#readme",
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json}": [
       "prettier --write",

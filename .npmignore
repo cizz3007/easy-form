@@ -2,6 +2,11 @@ node_modules
 src
 .eslintrc.json
 .eslintignore
+.eslintcache
+.stylelintcache
+.stylelintignore
+.stylelintrc
+.browserlistrc
 .gitignore
 .prettierrc.json
 .babel.config.js
