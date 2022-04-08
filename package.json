@@ -1,7 +1,7 @@
 {
   "name": "@cizz3007/easy-form",
   "title": "test-design-system",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "test",
   "main": "dist/esm/index.js",
   "module": "es/index.js",
