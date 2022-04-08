@@ -1,2 +1,6 @@
 dist/**/*.css
-package.json
+*.json
+*.js
+*.jsx
+*.ts
+*.tsx
