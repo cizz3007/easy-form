@@ -1,5 +1,16 @@
 node_modules
-dist
+src
+.eslintrc.json
+.eslintignore
+.gitignore
+.prettierrc.json
+.babel.config.js
+index.ts
+rollup.config.ts
+tsconfig.json
+tsconfig.tsbuildinfo
+.husky
+.github
 .DS_Store
 bundle-stats.html
 .vscode

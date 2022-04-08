@@ -6,3 +6,4 @@
 !node_modules
 !.next
 !babel.config.js
+dist
