@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.tsx"],"names":["default","Typography"],"mappings":"AACA,SAASA,OAAO,IAAIC,UAApB,QAAsC,cAAtC","sourcesContent":["export type { TypographyProps } from './typography';\nexport { default as Typography } from './typography';\n"],"file":"index.js"}
