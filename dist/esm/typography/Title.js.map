@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/typography/Title.tsx"],"names":["Title"],"mappings":"AAAA,eAAe,SAASA,KAAT,GAAiB;AAC9B,sBAAO,wCAAP;AACD","sourcesContent":["export default function Title() {\n  return <h1>Title</h1>;\n}\n"],"file":"Title.js"}
