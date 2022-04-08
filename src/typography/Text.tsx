@@ -1,3 +1,5 @@
+import { TextComponent } from '@src/typography/style/textStyle';
+
 export default function Text() {
-  return <p>text</p>;
+  return <TextComponent>TEXT BIULDED</TextComponent>;
 }

@@ -1,8 +1,9 @@
-!.eslintrc.js
-!.eslintrc.json
-!.prettierrc.js
-!.prettierrc.json
-!.gitignore
-!node_modules
-!.next
-!babel.config.js
+.gitignore
+.npmignore
+node_modules
+.next
+.husky
+.github
+dist
+*.css
+*.scss

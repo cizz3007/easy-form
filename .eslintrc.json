@@ -4,11 +4,18 @@
     "es2021": true,
     "node": true
   },
+  "ignorePatterns": ["dist/**"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
     "JSX": true,
@@ -31,8 +38,9 @@
     "no-multiple-empty-lines": "error",
     "no-empty-function": "error",
     "react/display-name": "off",
-    "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",

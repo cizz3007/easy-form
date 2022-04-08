@@ -1,18 +1,22 @@
 {
   "name": "@cizz3007/easy-form",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "test",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
+    "style": "npx stylelint \"src/**/*.css\" --cache --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "remove:react": "npx react-codemod update-react-imports",
     "build:rollup": "rimraf ./dist2 && rollup -c ./scripts/rollup/rollup.config.js && npm run build:types2",
+    "prebuild": "echo I run before the build",
     "build": "rimraf ./dist && npm run build:esm && npm run build:cjs && npm run build:types",
     "build:esm": "BABEL_ENV=esm babel src --extensions .ts,.tsx -d dist/esm --source-maps",
     "build:cjs": "BABEL_ENV=cjs babel src --extensions .ts,.tsx -d dist/cjs --source-maps",
-    "build:types": "tsc --declaration --declarationDir dist/types"
+    "build:types": "tsc --declaration --declarationDir dist/types",
+    "postbuild": "echo I run after the build script"
   },
   "repository": {
     "type": "git",
@@ -31,8 +35,9 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json}": [
       "prettier --write",
-      "eslint --max-warnings 0",
-      "eslint --fix"
+      "eslint src --cache --fix",
+      "npm run style",
+      "git add"
     ]
   },
   "peerDependencies": {
@@ -92,9 +97,13 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
+    "stylelint": "^14.6.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^7.0.0",
     "typescript": "^4.6.3"
   },
   "dependencies": {
+    "@babel/runtime": "^7.17.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "styled-components": "5.3.5"

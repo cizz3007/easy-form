@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/typography/Text.tsx"],"names":["Text"],"mappings":"AAAA,eAAe,SAASA,IAAT,GAAgB;AAC7B,sBAAO,sCAAP;AACD","sourcesContent":["export default function Text() {\n  return <p>text</p>;\n}\n"],"file":"Text.js"}
