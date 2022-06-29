@@ -1,6 +1,0 @@
-dist/**/*.css
-*.json
-*.js
-*.jsx
-*.ts
-*.tsx

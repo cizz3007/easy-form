@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/typography/Paragraph.tsx"],"names":["Paragraph"],"mappings":"AAAA,eAAe,SAASA,SAAT,GAAqB;AAClC,sBAAO,4CAAP;AACD","sourcesContent":["export default function Paragraph() {\n  return <p> paragraph</p>;\n}\n"],"file":"Paragraph.js"}

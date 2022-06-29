@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/typography/style/textStyle.ts"],"names":["styled","TextComponent","p"],"mappings":";;;;AAAA,OAAOA,MAAP,MAAmB,mBAAnB;AAEA,OAAO,IAAMC,aAAa,GAAGD,MAAM,CAACE,CAAV,+GAAnB","sourcesContent":["import styled from 'styled-components';\n\nexport const TextComponent = styled.p`\n  font-size: 10px;\n  color: red;\n`;\n"],"file":"textStyle.js"}
