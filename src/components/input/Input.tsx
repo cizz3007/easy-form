@@ -3,7 +3,9 @@ import { InputContainerStyle } from '@src/components/input/styles/InputStyle';
 import InputLabel from '@src/components/input/misc/InputLabel';
 import InputDescription from '@src/components/input/misc/InputDescription';
 import Flex from '@src/components/layout/Flex';
+import Icon from '@src/components/icon';
 
+const { Close } = Icon;
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
   type: Extract<HTMLInputTypeAttribute, 'text' | 'email' | 'number'>;
   name: string;
@@ -16,6 +18,7 @@ interface InputProps extends HTMLAttributes<HTMLInputElement> {
   onFocus?: (value: any) => any;
   onBlur?: (value: any) => any;
   required?: boolean;
+  activeResetButton?: boolean;
 }
 
 const Input = forwardRef(
@@ -32,6 +35,7 @@ const Input = forwardRef(
       title,
       description,
       defaultValue,
+      activeResetButton = false,
       ...rest
     }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
@@ -40,7 +44,7 @@ const Input = forwardRef(
       <div css={InputContainerStyle} className={className}>
         {title && <InputLabel title={title} htmlFor={id + name} required={required} />}
         {description && <InputDescription text={description} />}
-        <Flex alignItems={'center'}>
+        <Flex alignItems={'center'} className={'input-box'}>
           <input
             {...rest}
             defaultValue={defaultValue}
@@ -52,6 +56,7 @@ const Input = forwardRef(
             onFocus={onFocus}
             onBlur={onBlur}
           />
+          {activeResetButton && <Close size={'Medium'} />}
         </Flex>
       </div>
     );

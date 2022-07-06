@@ -5,18 +5,21 @@ const InputContainerStyle = css`
   font-size: 16px;
   line-height: 24px;
 
+  .input-box {
+    border: 1px solid #1f1f2c;
+    padding: 12px 16px;
+  }
+
   input {
     ${resetStyle};
     font-size: inherit;
     line-height: inherit;
     background-color: #fff;
     width: 100%;
-    height: 40px;
+    height: 20px;
     font-weight: 400;
-    padding: 12px 16px;
     color: #1f1f2c;
     outline: 0;
-    border: 1px solid #1f1f2c;
 
     &::placeholder {
       color: #1f1f2c;
