@@ -6,7 +6,8 @@ import Flex from '@src/components/layout/Flex';
 import Icon from '@src/components/icon';
 
 const { Close } = Icon;
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
+
+export interface InputProps extends HTMLAttributes<HTMLInputElement> {
   type: Extract<HTMLInputTypeAttribute, 'text' | 'email' | 'number'>;
   name: string;
   id?: string;

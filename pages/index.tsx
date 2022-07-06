@@ -1,8 +1,6 @@
 import type { NextPage } from 'next';
 import styles from '../styles/Home.module.css';
-import { Button } from '@src/components';
-import Input from '@src/components/input';
-import Icon from '@src/components/icon';
+import { Button, Icon, Input } from '@src/components';
 import { useState } from 'react';
 
 const { Close } = Icon;
