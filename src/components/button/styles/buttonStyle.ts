@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { ButtonSize, ButtonTheme } from '@src/components/button';
-import { ButtonShape } from '@src/components/button/type/button.type';
+import { ButtonShape } from '@src/components/button/types/button.type';
 
 function renderTheme(theme: ButtonTheme) {
   switch (theme) {

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ForwardedRef, forwardRef } from 'react';
-import { ButtonShape, ButtonSize, ButtonTheme } from '@src/components/button/type/button.type';
-import { buttonStyle } from '@src/components/button/style/buttonStyle';
+import { ButtonShape, ButtonSize, ButtonTheme } from '@src/components/button/types/button.type';
+import { buttonStyle } from '@src/components/button/styles/buttonStyle';
 
 interface ButtonComponent extends ButtonHTMLAttributes<HTMLButtonElement> {
   size: ButtonSize;

@@ -32,7 +32,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "no-undef": "error",
-    "no-console": "warn",
+    //    "no-console": "warn",
     "no-var": "error",
     "no-empty": "error",
     "no-multiple-empty-lines": "error",
