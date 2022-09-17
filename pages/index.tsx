@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Calendar from '@src/components/calendar/Calendar';
 
 const Home: NextPage = () => {
-  const [selected, setSelected] = useState<string[]>(['2022-09-04', '2022-09-07', '2022-09-11']);
+  const [selected, setSelected] = useState<string[]>(['2022-09-04', '2022-09-07']);
   return (
     <div className={styles.container}>
       <Calendar month={10} year={2022} selected={selected} onSelect={setSelected} />

@@ -8,6 +8,7 @@ import {
   innerLayout
 } from './styles/calendarStyle';
 import { CalendarComponentProps } from './types/calendar.type';
+import { getDaysLang } from '@src/components/calendar/utils/getDaysLang';
 
 const Calendar = forwardRef(
   (
@@ -25,33 +26,55 @@ const Calendar = forwardRef(
   ) => {
     //현재 년월에 맞는 생성된 날짜 데이터 배열
     const [dates, setDates] = useState<number[]>([]);
+    const [prevDates, setPrevDates] = useState<number[]>([]);
+    const [nextDates, setNextDates] = useState<number[]>([]);
 
     useEffect(() => {
-      const lastDay: number = new Date(year, month, 0).getDate();
-      const days: number[] = [];
-      for (let i = 1; i <= lastDay; i++) {
-        days.push(i);
+      const prevLastDate: number = new Date(year, month - 1, 0).getDate();
+      const currentLastDate: number = new Date(year, month, 0).getDate();
+      const day: number = new Date(year, month - 1, 1).getDay();
+      const currentLastDay: number = new Date(year, month - 1, currentLastDate).getDay();
+      const dateArr: number[] = [];
+      const prevDateArr: number[] = [];
+      const nextDateArr: number[] = [];
+
+      for (let i = 1; i <= currentLastDate; i++) {
+        dateArr.push(i);
       }
-      setDates(days);
+      for (let i = prevLastDate; i > prevLastDate - day; i--) {
+        prevDateArr.push(i);
+      }
+      for (let i = 1; i < 7 - currentLastDay + 7; i++) {
+        const total = dateArr.length + prevDateArr.length + i;
+        if (total > 42) {
+          break;
+        }
+        nextDateArr.push(i);
+      }
+      setDates(dateArr);
+      setPrevDates(prevDateArr);
+      setNextDates(nextDateArr);
     }, [month, year]);
 
     const sortDates = useCallback((selected: string[]) => {
       return selected.sort((a, b) => (new Date(a).getTime() < new Date(b).getTime() ? -1 : 1));
     }, []);
 
+    const getDateObject = useCallback((dateValue: string) => {
+      return new Date(dateValue);
+    }, []);
     // 달력 날짜들
     const calendars = useMemo(() => {
-      return dates.map((day: number) => {
+      return [...prevDates, ...dates, ...nextDates].map((day: number) => {
         const formattedMonth = month < 10 ? `0${month}` : month;
         const formattedDay = day < 10 ? `0${day}` : day;
         const dateValue = year + '-' + formattedMonth + '-' + formattedDay;
         const isSelected = selected.some((searchElement) => searchElement === dateValue);
         const currentIndex = selected.findIndex((value) => value === dateValue);
         const isOdd = currentIndex % 2 == 0;
-
+        console.log(getDaysLang(getDateObject(dateValue).getDay()));
         let className = 'default';
         if (isSelected) {
-          console.log(currentIndex);
           className += ' selected';
           if (isOdd) {
             className += ' start';
