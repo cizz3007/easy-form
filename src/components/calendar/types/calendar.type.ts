@@ -9,8 +9,8 @@ export type CalendarPayload = {
 export interface CalendarComponentProps {
   month: number;
   year: number;
-  selected: string[] | CalendarPayload[];
-  onChange: any;
+  selected: string[];
+  onSelect: any;
   visibleNavigator?: boolean;
   selectAllDateOfMonth?: any;
   setSelectedDays: any;

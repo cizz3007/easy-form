@@ -1,6 +1,6 @@
 import CalendarComponent from './Calendar';
 import { ForwardRefExoticComponent } from 'react';
-import { CalendarComponentProps } from '@src/components';
+import { CalendarComponentProps } from './types/calendar.type';
 
 interface CompoundedCalendarComponent extends ForwardRefExoticComponent<CalendarComponentProps> {
   Default: typeof CalendarComponent;

@@ -1,11 +1,5 @@
 import { css } from '@emotion/react';
-import { MIX_IN_TRANSITION_LINEAR } from '@styles/mixin';
 
-const flexStyle = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 const tileHoverStyle = css`
   &:hover {
     background-color: darkgray;
@@ -20,6 +14,7 @@ const defaultTileStyle = css`
   overflow: hidden;
   font-size: 14px;
   color: lightgray;
+  border: 0;
 
   > .contents-area {
     position: relative;
@@ -49,26 +44,6 @@ const innerLayout = css`
 `;
 const dayBoxStyle = css`
   flex-wrap: wrap;
-
-  .default {
-    position: relative;
-    background-color: transparent;
-    border: 0;
-    color: #333;
-
-    &.transit {
-      &::after {
-        position: absolute;
-        left: 0;
-        top: 0;
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-color: whitesmoke;
-      }
-    }
-  }
 `;
 
 const calendarTitleStyle = css`
@@ -87,7 +62,6 @@ const calendarButtonStyle = css`
   margin: 0;
 
   > i {
-    ${MIX_IN_TRANSITION_LINEAR};
     &:hover {
       transform: scale(1.25);
     }
@@ -98,8 +72,23 @@ const calendarContainerStyle = css`
   min-height: 288px;
 `;
 const dayButtonStyle = css`
+  position: relative;
   ${defaultTileStyle};
+  background-color: #fff;
   transition: background-color, color 0.22s ease-in-out;
+
+  &.transit {
+    &::after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: whitesmoke;
+    }
+  }
 
   &.selected {
     position: relative;
@@ -107,7 +96,7 @@ const dayButtonStyle = css`
     border: 0;
 
     // 시작
-    &.start {
+    &.start:not(.single) {
       &::after {
         position: absolute;
         right: 0;
@@ -169,21 +158,14 @@ const extraButtonStyle = css`
   border: 1px solid blue;
 `;
 
-const contentsAreaStyle = css`
-  text-align: right;
-  padding: 10px;
-`;
-
 export {
   calendarLayoutStyle,
   innerLayout,
   dayBoxStyle,
-  flexStyle,
   dayButtonStyle,
   calendarTitleStyle,
   calendarButtonStyle,
   calendarContainerStyle,
   extraButtonContainerStyle,
-  extraButtonStyle,
-  contentsAreaStyle
+  extraButtonStyle
 };
