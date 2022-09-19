@@ -1,4 +1,4 @@
-function getDaysLang(value: number) {
+function getDaysLang(value: number): string {
   switch (value) {
     case 1:
       return '월';
@@ -12,8 +12,10 @@ function getDaysLang(value: number) {
       return '금';
     case 6:
       return '토';
-    case 7:
+    case 0:
       return '일';
+    default:
+      return '?';
   }
 }
 

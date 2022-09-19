@@ -8,7 +8,7 @@ import {
   innerLayout
 } from './styles/calendarStyle';
 import { CalendarComponentProps } from './types/calendar.type';
-import { getDaysLang } from '@src/components/calendar/utils/getDaysLang';
+import { formatDate, FormattedDateType } from '@src/components/calendar/utils/formatDate';
 
 const Calendar = forwardRef(
   (
@@ -25,31 +25,32 @@ const Calendar = forwardRef(
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     //현재 년월에 맞는 생성된 날짜 데이터 배열
-    const [dates, setDates] = useState<number[]>([]);
-    const [prevDates, setPrevDates] = useState<number[]>([]);
-    const [nextDates, setNextDates] = useState<number[]>([]);
+    const [dates, setDates] = useState<FormattedDateType[]>([]);
+    const [prevDates, setPrevDates] = useState<FormattedDateType[]>([]);
+    const [nextDates, setNextDates] = useState<FormattedDateType[]>([]);
 
     useEffect(() => {
       const prevLastDate: number = new Date(year, month - 1, 0).getDate();
       const currentLastDate: number = new Date(year, month, 0).getDate();
+      // 시작하는 이번 달의 요일
       const day: number = new Date(year, month - 1, 1).getDay();
       const currentLastDay: number = new Date(year, month - 1, currentLastDate).getDay();
-      const dateArr: number[] = [];
-      const prevDateArr: number[] = [];
-      const nextDateArr: number[] = [];
+      const dateArr: FormattedDateType[] = [];
+      const prevDateArr: FormattedDateType[] = [];
+      const nextDateArr: FormattedDateType[] = [];
 
       for (let i = 1; i <= currentLastDate; i++) {
-        dateArr.push(i);
+        dateArr.push(formatDate(year, month, i, 'current', false));
       }
-      for (let i = prevLastDate; i > prevLastDate - day; i--) {
-        prevDateArr.push(i);
+      for (let i = prevLastDate - day + 1; i < prevLastDate + 1; i++) {
+        prevDateArr.push(formatDate(year, month - 1, i, 'prev', true));
       }
       for (let i = 1; i < 7 - currentLastDay + 7; i++) {
         const total = dateArr.length + prevDateArr.length + i;
         if (total > 42) {
           break;
         }
-        nextDateArr.push(i);
+        nextDateArr.push(formatDate(year, month + 1, i, 'next', true));
       }
       setDates(dateArr);
       setPrevDates(prevDateArr);
@@ -60,20 +61,22 @@ const Calendar = forwardRef(
       return selected.sort((a, b) => (new Date(a).getTime() < new Date(b).getTime() ? -1 : 1));
     }, []);
 
-    const getDateObject = useCallback((dateValue: string) => {
-      return new Date(dateValue);
-    }, []);
     // 달력 날짜들
     const calendars = useMemo(() => {
-      return [...prevDates, ...dates, ...nextDates].map((day: number) => {
-        const formattedMonth = month < 10 ? `0${month}` : month;
-        const formattedDay = day < 10 ? `0${day}` : day;
-        const dateValue = year + '-' + formattedMonth + '-' + formattedDay;
+      return [...prevDates, ...dates, ...nextDates].map((day: FormattedDateType) => {
+        const dateValue = day.value;
+        const disabled = day.disabled;
         const isSelected = selected.some((searchElement) => searchElement === dateValue);
         const currentIndex = selected.findIndex((value) => value === dateValue);
         const isOdd = currentIndex % 2 == 0;
-        console.log(getDaysLang(getDateObject(dateValue).getDay()));
+
+        const isCurrentMonth = day.type === 'current';
         let className = 'default';
+
+        if (isCurrentMonth) {
+          className += ' current';
+        }
+
         if (isSelected) {
           className += ' selected';
           if (isOdd) {
@@ -128,13 +131,13 @@ const Calendar = forwardRef(
             type={'button'}
             tabIndex={0}
             className={className}
-            onClick={onClickHandler}
+            onClick={disabled ? undefined : onClickHandler}
           >
-            <div className={'contents-area'}>{day}</div>
+            <div className={'contents-area'}>{day.date}</div>
           </button>
         );
       });
-    }, [dates, month, onSelect, selected, sortDates, year]);
+    }, [dates, month, onSelect, selected, sortDates, year, nextDates]);
 
     return (
       <div css={calendarLayoutStyle} ref={ref}>

@@ -40,7 +40,6 @@ const innerLayout = css`
   min-width: 336px;
   box-sizing: content-box;
   min-height: 288px;
-  padding: 46px;
 `;
 const dayBoxStyle = css`
   flex-wrap: wrap;
@@ -90,6 +89,9 @@ const dayButtonStyle = css`
     }
   }
 
+  &.current {
+    color: black;
+  }
   &.selected {
     position: relative;
     background-color: transparent;
